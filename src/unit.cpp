@@ -22,3 +22,15 @@ int Unit::getId()
 {
 	return _id;
 }
+
+void Unit::setPosition(int p_x, int p_y)
+{
+	_position.x = p_x;
+	_position.y = p_y;
+}
+
+void Unit::moveBy(int p_x, int p_y)
+{
+	_position.x += p_x;
+	_position.y += p_y;
+}
