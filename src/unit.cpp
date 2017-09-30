@@ -6,6 +6,7 @@ Unit::Unit(sf::RenderWindow* p_window)
 {
 	_id = _global_id++; 
 	_window = p_window;
+	_faction = 0;
 }
 
 int Unit::getHp()
