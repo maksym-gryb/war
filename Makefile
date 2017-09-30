@@ -1,5 +1,5 @@
 CC = g++
-CC_FLAGS = -Iinc
+CC_FLAGS = -Iinc -Wall -g
 LD_FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 INC = #hello.h
@@ -10,9 +10,9 @@ OBJ := $(addprefix obj/,$(notdir $(SRC:.cpp=.o)))
 EXECUTABLE = app 
 
 # Start of execution directives
-run: ${EXECUTABLE}
-	clear
-	./${EXECUTABLE}
+#run: ${EXECUTABLE}
+#	clear
+#	./${EXECUTABLE}
 
 $(EXECUTABLE): $(OBJ)
 	$(CC) -o $@ $^ $(LD_FLAGS)
