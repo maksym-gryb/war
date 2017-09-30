@@ -1,5 +1,5 @@
 CC = g++
-CC_FLAGS = -I.
+CC_FLAGS = -Iinc
 LD_FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 INC = #hello.h
