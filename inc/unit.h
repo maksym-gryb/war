@@ -23,6 +23,8 @@ class Unit{
 		void setPosition(int p_x, int p_y);
 		void moveBy(int p_x, int p_y);
 
+		sf::Vector2f getPosition();
+
 	protected:
 		int _hp;
 		state _state;

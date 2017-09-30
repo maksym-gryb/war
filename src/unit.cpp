@@ -44,3 +44,8 @@ void Unit::moveBy(int p_x, int p_y)
 	_position.x += p_x;
 	_position.y += p_y;
 }
+
+sf::Vector2f Unit::getPosition()
+{
+	return _position;
+}
