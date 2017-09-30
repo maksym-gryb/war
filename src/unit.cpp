@@ -23,6 +23,16 @@ int Unit::getId()
 	return _id;
 }
 
+void Unit::setFaction(int p_faction)
+{
+	_faction = p_faction;
+}
+
+int Unit:getFaction()
+{
+	return _faction;
+}
+
 void Unit::setPosition(int p_x, int p_y)
 {
 	_position.x = p_x;

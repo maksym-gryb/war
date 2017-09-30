@@ -17,13 +17,17 @@ class Unit{
 		state getState();
 		int getId();
 
+		void setFaction(int p_faction);
+		int getFaction();
+
 		void setPosition(int p_x, int p_y);
 		void moveBy(int p_x, int p_y);
-
 
 	protected:
 		int _hp;
 		state _state;
+		int _faction;
+
 		sf::Vector2f _position;
 
 		sf::RenderWindow* _window;
