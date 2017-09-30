@@ -28,7 +28,7 @@ void Unit::setFaction(int p_faction)
 	_faction = p_faction;
 }
 
-int Unit:getFaction()
+int Unit::getFaction()
 {
 	return _faction;
 }
