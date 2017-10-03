@@ -23,4 +23,4 @@ obj/%.o: src/%.cpp
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o $(EXECUTABLE)
+	rm -f obj/*.o $(EXECUTABLE)
