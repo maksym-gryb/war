@@ -9,11 +9,6 @@ OBJ := $(addprefix obj/,$(notdir $(SRC:.cpp=.o)))
 
 EXECUTABLE = app 
 
-# Start of execution directives
-#run: ${EXECUTABLE}
-#	clear
-#	./${EXECUTABLE}
-
 $(EXECUTABLE): $(OBJ)
 	$(CC) -o $@ $^ $(LD_FLAGS)
 
@@ -24,3 +19,9 @@ obj/%.o: src/%.cpp
 
 clean:
 	rm -f obj/*.o $(EXECUTABLE)
+
+.PHONY: run
+
+run: ${EXECUTABLE}
+	clear
+	./${EXECUTABLE}
