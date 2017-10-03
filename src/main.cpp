@@ -16,9 +16,7 @@ int main()
                 window.close();
         }
 
-        window.clear();
 	current_scene->update();
-        window.display();
     }
 
     return 0;

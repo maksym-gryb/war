@@ -7,6 +7,6 @@ class Scene{
 		Scene(sf::RenderWindow* p_window);
 		virtual bool update(int p_ticks = 1) = 0;
 
-	private:
+	protected:
 		sf::RenderWindow* _window;
 };
