@@ -13,10 +13,12 @@ class Infantry : public Unit{
 		Infantry(sf::RenderWindow* p_w, Map* p_map, Faction p_fac);
 		~Infantry();
 
-		state update();
+		State update();
 
 		bool inRangeWith(Unit* p_target);
 		void shoot(Unit* p_target);
+
+		void takeDamage(int p_damage);
 
 	private:
 		Map* _map;

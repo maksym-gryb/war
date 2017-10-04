@@ -47,6 +47,9 @@ bool TestScene::update(int p_ticks)
 			{
 				projectile_it = _map.eraseProjectile(projectile_it);
 				collision = true;
+
+				if((*unit_it)->loseHp(1) == DEAD)
+					_map.eraseUnit(unit_it);
 				break;
 			}
 

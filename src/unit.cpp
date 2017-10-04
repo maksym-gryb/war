@@ -12,16 +12,26 @@ Unit::Unit(sf::RenderWindow* p_window)
 void Unit::draw()
 {
 	_window->draw(_body);
+	_hp.draw();
 }
 
 int Unit::getHp()
 {
-	return _hp;
+	return _hp.getAmount();
 }
 
-state Unit::getState()
+State Unit::loseHp(int p_hp)
 {
-	return _state;
+	_hp.setAmount(_hp.getAmount() - p_hp);
+
+	if(_hp.getAmount() <= 0)
+		return DEAD;
+	return ALIVE;
+}
+
+State Unit::getState()
+{
+	return _State;
 }
 
 int Unit::getId()
@@ -41,10 +51,13 @@ Faction Unit::getFaction()
 
 void Unit::setPosition(float p_x, float p_y)
 {
+	sf::Vector2f diff = _hp.getPosition() - _body.getPosition();
+
 	_position.x = p_x;
 	_position.y = p_y;
 
 	_body.setPosition(p_x, p_y);
+	_hp.setPosition(_body.getPosition() + diff);
 }
 
 void Unit::moveBy(float p_x, float p_y)
@@ -52,7 +65,8 @@ void Unit::moveBy(float p_x, float p_y)
 	_position.x += p_x;
 	_position.y += p_y;
 
-	_body.move(p_x, p_y);
+	_body.move(sf::Vector2f(p_x, p_y));
+	_hp.move(sf::Vector2f(p_x, p_y));
 }
 
 sf::Vector2f Unit::getPosition()

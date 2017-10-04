@@ -6,12 +6,14 @@ Infantry::Infantry(sf::RenderWindow* p_window, Map* p_map, Faction p_fac) :
 	_map = p_map;
 	_faction = p_fac;
 
-	_hp = 5;
-	_state = ALIVE;
+	_hp = Bar(_window, 5, 5);
+	_hp.setPosition(sf::Vector2f(0, -10));
+	_State = ALIVE;
 	_position = sf::Vector2f(0, 0);
 
-	_body = sf::CircleShape(4);
-	_body.setOrigin(4, 4);
+	int radius = 4;
+	_body = sf::CircleShape(radius);
+	_body.setOrigin(radius, radius);
 	switch(_faction)
 	{
 		case RED:
@@ -33,7 +35,7 @@ Infantry::Infantry(sf::RenderWindow* p_window, Map* p_map, Faction p_fac) :
 Infantry::~Infantry()
 {}
 
-state Infantry::update()
+State Infantry::update()
 {
 	if(_faction == RED)
 		moveBy(0.3, 0.3);
@@ -55,10 +57,10 @@ state Infantry::update()
 		it++;
 	}
 
-	if(_hp <= 0)
-		_state = DEAD;
+	if(_hp.getAmount() <= 0)
+		_State = DEAD;
 
-	return _state;
+	return _State;
 }
 
 bool Infantry::inRangeWith(Unit* p_target)
@@ -83,4 +85,9 @@ void Infantry::shoot(Unit* p_target)
 				       p_target->getPosition()));
 
 	_reload_rate_clock.restart();
+}
+
+void Infantry::takeDamage(int p_damage)
+{
+	_hp.setAmount(_hp.getAmount() -  p_damage);
 }

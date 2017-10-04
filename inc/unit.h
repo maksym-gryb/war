@@ -2,9 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "bar.h"
+
 #include <cmath>
 
-enum state{
+enum State{
 	ALIVE = 0,
 	DEAD
 };
@@ -18,11 +20,12 @@ enum Faction{
 class Unit{
 	public:
 		Unit(sf::RenderWindow* window);
-		virtual state update() = 0;
+		virtual State update() = 0;
 		void draw();
 
 		int getHp();
-		state getState();
+		State loseHp(int p_hp);
+		State getState();
 		int getId();
 
 		void setFaction(Faction p_faction);
@@ -39,8 +42,8 @@ class Unit{
 		sf::CircleShape getBody();
 
 	protected:
-		int _hp;
-		state _state;
+		Bar _hp;
+		State _State;
 		Faction _faction;
 
 		sf::Vector2f _position;
