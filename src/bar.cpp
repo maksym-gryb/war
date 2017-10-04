@@ -5,16 +5,19 @@ Bar::Bar()
 
 Bar::Bar(sf::RenderWindow* p_window, int p_max, int p_amount)
 {
+	float height = 3.0f;
+	float width  = 20.0f;
+	float thickness = 1.0f;
 	_window = p_window;
 
 	_max = p_max;
 	_amount = p_amount;
 
-	sf::Vector2f position = sf::Vector2f(20.0f, 6.0f);
+	sf::Vector2f position = sf::Vector2f(width, height);
 	sf::Vector2f origin = position / 2.0f;
 
 	_background = sf::RectangleShape(position);
-	_background.setFillColor(sf::Color(22, 22, 22));
+	_background.setFillColor(sf::Color(100, 100, 100));
 	_background.setOrigin(origin);
 
 	_fill = sf::RectangleShape(position);
