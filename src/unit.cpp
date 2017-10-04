@@ -70,3 +70,8 @@ bool Unit::operator!=(const Unit* that)
 {
 	return this->_id != that->_id;
 }
+
+sf::CircleShape Unit::getBody()
+{
+	return _body;
+}

@@ -25,10 +25,11 @@ Bullet::Bullet(sf::RenderWindow* p_window,
 
 	auto norm = unitVector(p_pos, p_target);
 
-	_line[0].position = p_pos;
-	_line[0].color  = sf::Color::White;
-	_line[1].position = p_pos + norm*4.0f;
-	_line[1].color = sf::Color::White;
+	_body = sf::VertexArray(sf::LineStrip, 2);
+	_body[0].position = p_pos;
+	_body[0].color  = sf::Color::White;
+	_body[1].position = p_pos + norm*4.0f;
+	_body[1].color = sf::Color::White;
 
 	_velocity = norm * SPEED;
 	
@@ -40,14 +41,8 @@ Bullet::~Bullet()
 
 void Bullet::update()
 {
-	_line[0].position = _line[0].position + _velocity;
-	_line[1].position = _line[1].position + _velocity;
-}
-
-void Bullet::draw()
-{
-
-	_window->draw(_line, 2, sf::Lines);
+	_body[0].position = _body[0].position + _velocity;
+	_body[1].position = _body[1].position + _velocity;
 }
 
 sf::Vector2f Bullet::unitVector(sf::Vector2f source,

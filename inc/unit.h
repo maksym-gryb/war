@@ -36,6 +36,8 @@ class Unit{
 		bool operator==(const Unit* that);
 		bool operator!=(const Unit* that);
 
+		sf::CircleShape getBody();
+
 	protected:
 		int _hp;
 		state _state;

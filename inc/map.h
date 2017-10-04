@@ -15,9 +15,11 @@ class Map{
 
 		std::list<Unit*>::iterator unitBegin();
 		std::list<Unit*>::iterator unitEnd();
+		std::list<Unit*>::iterator eraseUnit(std::list<Unit*>::iterator it);
 
 		std::list<Projectile*>::iterator projectileBegin();
 		std::list<Projectile*>::iterator projectileEnd();
+		std::list<Projectile*>::iterator eraseProjectile(std::list<Projectile*>::iterator it);
 
 	private:
 		std::list<Unit*> _units;

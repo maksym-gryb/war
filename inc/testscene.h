@@ -13,6 +13,7 @@ class TestScene : public Scene{
 	public:
 		TestScene(sf::RenderWindow* window);
 		bool update(int p_ticks);
+		bool collides(sf::CircleShape p_circle, sf::VertexArray p_lines);
 
 	private:
 		Map _map;

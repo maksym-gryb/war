@@ -35,12 +35,43 @@ bool TestScene::update(int p_ticks)
 
 	while(projectile_it != _map.projectileEnd())
 	{
+		bool collision = false;
 		(*projectile_it)->update();
 		(*projectile_it)->draw();
-		projectile_it++;
+
+		// Handler Collision
+		auto unit_it = _map.unitBegin();
+		while(unit_it != _map.unitEnd())
+		{
+			if(collides((*unit_it)->getBody(), (*projectile_it)->getBody()))
+			{
+				projectile_it = _map.eraseProjectile(projectile_it);
+				collision = true;
+				break;
+			}
+
+			unit_it++;
+		}
+		if(!collision)
+			projectile_it++;
 	}
 
 	_window->display();
 
 	return true;
+}
+
+bool TestScene::collides(sf::CircleShape p_circle, sf::VertexArray p_lines)
+{
+	for(int i = 0; i < p_lines.getVertexCount(); i++)
+	{
+		float x = p_circle.getPosition().x - p_lines[i].position.x;
+		float y = p_circle.getPosition().y - p_lines[i].position.y;
+		float distance = sqrt(x*x + y*y);
+
+		if(distance <= p_circle.getRadius())
+			return true;
+	}
+
+	return false;
 }

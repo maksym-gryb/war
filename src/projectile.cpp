@@ -17,4 +17,10 @@ void Projectile::update()
 
 void Projectile::draw()
 {
+	_window->draw(_body);
+}
+
+sf::VertexArray Projectile::getBody()
+{
+	return _body;
 }

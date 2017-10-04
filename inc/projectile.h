@@ -13,9 +13,11 @@ class Projectile{
 		~Projectile();
 
 		virtual void update();
-		virtual void draw();
+		void draw();
+		sf::VertexArray getBody();
 
 	protected:
 		sf::RenderWindow* _window;
 		Faction _faction;
+		sf::VertexArray _body;
 };

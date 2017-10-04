@@ -26,6 +26,11 @@ std::list<Unit*>::iterator Map::unitEnd()
 	return _units.end();
 }
 
+std::list<Unit*>::iterator Map::eraseUnit(std::list<Unit*>::iterator it)
+{
+	return _units.erase(it);
+}
+
 std::list<Projectile*>::iterator Map::projectileBegin()
 {
 	return _projectiles.begin();
@@ -34,4 +39,9 @@ std::list<Projectile*>::iterator Map::projectileBegin()
 std::list<Projectile*>::iterator Map::projectileEnd()
 {
 	return _projectiles.end();
+}
+
+std::list<Projectile*>::iterator Map::eraseProjectile(std::list<Projectile*>::iterator it)
+{
+	return _projectiles.erase(it);
 }

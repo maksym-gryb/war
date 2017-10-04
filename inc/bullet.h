@@ -21,15 +21,13 @@ class Bullet : public Projectile{
 		~Bullet();
 
 		void update();
-		void draw();
 
 		sf::Vector2f unitVector(sf::Vector2f source,
 					sf::Vector2f target);
 
+
 	private:
 		Map* _map;
-
-		sf::Vertex _line[2];
 
 		sf::Vector2f _velocity;
 };
